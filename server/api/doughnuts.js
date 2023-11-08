@@ -64,16 +64,40 @@ function parseBody(body) {
   return doughnut;
 }
 
+function parseBody(body) {
+  const { location, time, monthDay, doughnut_type, rating, comments } = body;
+  const rate = { location, time, monthDay, doughnut_type, rating, comments };
+
+  return rate;
+}
 // CREATE ONE RATING
 router.post('/ratings', (req, res, next) => {
-  const query =
-    'INSERT INTO doughnut_ratings (location, time, date, type, rating, comments) VALUES(?, ?, ?, ?, ?, ?)';
+  pool.getConnection((err, connection) => {
+    if (err) {
+      next(err);
+      pool.end();
+      return;
+    }
 
-  //     INSERT INTO doughnut_ratings (location, time, date, type, rating, comments)
-  // VALUES("Duncan\'s Donuts", "19:58:00", STR_TO_DATE('4/26', '%m/%d'), "jelly", 6, "stale, but tasty");
+    const rate = parseBody(req.body);
+    const query =
+      "INSERT INTO doughnut_ratings (location, time, date, type, rating, comments) VALUES(?, ?, STR_TO_DATE(?, '%m/%d'), ?, ?, ?)";
 
-  res.status(200);
-  res.json({ message: 'Received a request to create one rating' });
+    const { location, time, monthDay, doughnut_type, rating, comments } = rate;
+    const values = [location, time, monthDay, doughnut_type, rating, comments];
+
+    connection.query(query, values, (error, results, fields) => {
+      if (error) {
+        next(error);
+        connection.release();
+        return;
+      }
+
+      res.status(200);
+      res.json(results);
+      connection.release();
+    });
+  });
 });
 
 // CREATE ONE
@@ -97,6 +121,7 @@ router.post('/', (req, res, next) => {
     connection.query(query, values, (error, results, fields) => {
       if (error) {
         next(error);
+        connection.release();
         return;
       }
 

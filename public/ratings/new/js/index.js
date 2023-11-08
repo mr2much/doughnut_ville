@@ -7,10 +7,12 @@ function getTime() {
   const minutes = now.getMinutes();
   const ampm = hours >= 12 ? 'pm' : 'am';
 
-  hours = hours % 12;
-  hours = hours ? hours : 12; // Handled midnight (0) as 12
+  //hours = hours % 12;
+  //hours = hours ? hours : 12; // Handled midnight (0) as 12
 
-  return `${hours}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+  return `${hours.toString().padStart(2, '0')}:${minutes
+    .toString()
+    .padStart(2, '0')}:00`;
 }
 
 function getMonthAndDay() {
@@ -27,14 +29,15 @@ function validateRating() {
 
   const location = formData.get('locations');
   const doughnut_type = formData.get('doughnut-type');
+  const rating = formData.get('rating');
   const comments = formData.get('comments');
 
   const time = getTime();
   const monthDay = getMonthAndDay();
 
-  const rating = { location, time, monthDay, doughnut_type, comments };
+  const rate = { location, time, monthDay, doughnut_type, rating, comments };
 
-  return rating;
+  return rate;
 }
 
 async function createNewRating(rating) {
