@@ -66,6 +66,12 @@ function parseBody(body) {
 
 // CREATE ONE RATING
 router.post('/ratings', (req, res, next) => {
+  const query =
+    'INSERT INTO doughnut_ratings (location, time, date, type, rating, comments) VALUES(?, ?, ?, ?, ?, ?)';
+
+  //     INSERT INTO doughnut_ratings (location, time, date, type, rating, comments)
+  // VALUES("Duncan\'s Donuts", "19:58:00", STR_TO_DATE('4/26', '%m/%d'), "jelly", 6, "stale, but tasty");
+
   res.status(200);
   res.json({ message: 'Received a request to create one rating' });
 });

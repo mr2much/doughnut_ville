@@ -37,10 +37,26 @@ function validateRating() {
   return rating;
 }
 
+async function createNewRating(rating) {
+  const options = {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(rating),
+  };
+
+  const res = await fetch(`${API_URL}/ratings`, options);
+
+  return res.json();
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const newRating = validateRating();
 
-  console.log(newRating);
+  createNewRating(newRating).then((result) => {
+    console.log(result);
+  });
 });
