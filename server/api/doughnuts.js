@@ -3,6 +3,12 @@ const pool = require('./database/db');
 
 const router = express.Router();
 
+// READ ALL RATINS
+router.get('/ratings', async (req, res, next) => {
+  res.status(200);
+  res.json({ message: 'Received a request to Ratings' });
+});
+
 // READ ALL
 router.get('/', async (req, res, next) => {
   pool.getConnection((err, connection) => {
@@ -46,6 +52,12 @@ function parseBody(body) {
 
   return doughnut;
 }
+
+// CREATE ONE RATING
+router.post('/ratings', (req, res, next) => {
+  res.status(200);
+  res.json({ message: 'Received a request to create one rating' });
+});
 
 // CREATE ONE
 router.post('/', (req, res, next) => {
