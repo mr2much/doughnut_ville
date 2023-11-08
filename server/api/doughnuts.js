@@ -5,8 +5,26 @@ const router = express.Router();
 
 // READ ALL RATINS
 router.get('/ratings', async (req, res, next) => {
-  res.status(200);
-  res.json({ message: 'Received a request to Ratings' });
+  pool.getConnection((err, connection) => {
+    if (err) {
+      next(err);
+      pool.end();
+      return;
+    }
+
+    const query = 'SELECT * FROM doughnut_ratings';
+
+    connection.query(query, (err, results, fields) => {
+      if (err) {
+        next(err);
+        connection.release();
+        return;
+      }
+
+      res.status(200);
+      res.json(results);
+    });
+  });
 });
 
 // READ ALL
@@ -18,19 +36,12 @@ router.get('/', async (req, res, next) => {
       return;
     }
 
-    connection.query('USE doughnut_ville', (err, results) => {
-      if (err) {
-        connection.release();
-        next(err);
-        return;
-      }
-    });
-
     const query = `SELECT * FROM doughnut_list`;
 
     connection.query(query, (err, results, fields) => {
       if (err) {
         next(err);
+        connection.release();
         return;
       }
 
@@ -67,14 +78,6 @@ router.post('/', (req, res, next) => {
       pool.end();
       return;
     }
-
-    connection.query('USE doughnut_ville', (err, results, fields) => {
-      if (err) {
-        connection.release();
-        next(err);
-        return;
-      }
-    });
 
     const doughnut = parseBody(req.body);
 
