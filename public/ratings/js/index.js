@@ -1,19 +1,19 @@
 const conditionContainer = document.querySelector('#condition-container');
 const filterContainer = document.querySelector('#filter-container');
 const newFilterButton = document.querySelector('#new-filter-btn');
-const filterForm = filterContainer.querySelector('#filter-form');
+const filterForm = document.querySelector('#dropdown-form');
 
 const ratingsTable = document.querySelector('table tbody');
 
 function removeSelf(element) {
   // Get the div element containing the parent form of the element
-  const parentFormDiv = element.parentNode.parentNode;
+  const parentFormDiv = element.parentNode;
 
   // Get the div containing all the filter elements
-  const filterContainer = document.querySelector('#filter-container');
+  //const filterContainer = document.querySelector('#filter-container');
 
   // Get the div containing all the condition elements
-  const conditionContainer = document.querySelector('#condition-container');
+  //const conditionContainer = document.querySelector('#condition-container');
 
   // Get the index of the form containing the calling element from filterContainer
   const index = Array.prototype.indexOf.call(
@@ -39,7 +39,7 @@ function addConditionContainer() {
   // div.style.marginLeft = '50%';
 
   div.innerHTML = `
-  <form id="condition-form">
+  <div id="condition-form">
     <select
       name="condition"
       id="condition"
@@ -50,7 +50,7 @@ function addConditionContainer() {
       <option value="AND">And</option>
       <option value="OR">Or</option>
       <option value="NOT">Not</option>
-  </form>
+  </div>
   `;
 
   conditionContainer.appendChild(div);
@@ -66,8 +66,7 @@ function addFilterContainer() {
     'element'
   );
 
-  div.innerHTML = `
-  <form class="d-flex" role="search">
+  div.innerHTML = `  
     <button
       id="remove-self"
       type="button"
@@ -119,15 +118,8 @@ function addFilterContainer() {
         placeholder="Search..."
         aria-label="search"
       />
-    </div>        
-  </form>
+    </div>          
   `;
-
-  // <div class="col-auto">
-  //     <button class="btn btn-outline-success" type="submit">
-  //       Search
-  //     </button>
-  //   </div>
 
   filterContainer.appendChild(div);
 }
