@@ -26,8 +26,18 @@ Brief project description goes here.
 -       [x]  create dropdown on the search form on client side
 -       [ ] add more comparisson operators to dropdown
 - [x] Add button to clear search results
+-       [ ] When pressing the button, remove all filters
 -       [x] When pressing the button, all controls must reset
 -       [x] When pressing the button, all entries should be displayed
+- [ ] Add multiple filters
+-       [x] Add elements for the filters
+-           [ ] Create search query matching filters
+-               [ ] Search query should be created from client side code
+-               [ ] Search query should contain selected conditionals
+-               [ ] Search query should contain specified criteria
+-       [x] Add button to remove unwanted filters
+-       [ ] When pressing the Search button, display results matching filters
+-       [ ] When removing one of the filters, apply filters with existing ones
 - [ ] Sort entries by column type, and values
 
 ## Server-Side (Back-End):

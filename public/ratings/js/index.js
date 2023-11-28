@@ -1,6 +1,7 @@
 const conditionContainer = document.querySelector('#condition-container');
 const filterContainer = document.querySelector('#filter-container');
 const newFilterButton = document.querySelector('#new-filter-btn');
+const filterForm = filterContainer.querySelector('#filter-form');
 
 const ratingsTable = document.querySelector('table tbody');
 
@@ -74,14 +75,7 @@ function addFilterContainer() {
       onclick="removeSelf(this)"
     >
       X
-    </button>
-    <button
-      id="btn-clear"
-      type="button"
-      class="btn btn-outline-dark me-2"
-    >
-      Clear
-    </button>
+    </button>    
 
     <div class="col-auto me-2">
       <select
@@ -197,3 +191,8 @@ function showRatings(ratings) {
 }
 
 loadEntries().then(showRatings);
+
+filterForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log('Filter form submitted');
+});
