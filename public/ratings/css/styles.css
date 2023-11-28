@@ -1,0 +1,21 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.filter-form {
+  background-color: #aaa;
+}
+
+.element {
+  display: inline-block;
+  height: 40px !important;
+  margin: 0.5em;
+}
+
+#dropdown-form {
+  width: 60vw;
+}

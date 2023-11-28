@@ -1,3 +1,4 @@
+const filterForm = document.querySelector('#dropdown-form');
 const form = document.querySelector('form');
 
 function getTime() {

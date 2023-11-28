@@ -52,9 +52,195 @@
     <div class="container-fluid">
       <h1 class="mb-3 text-center text-success">Doughnut Ratings</h1>
 
-      <div class="container-fluid mb-2">
+      <div class="mb-2 d-flex justify-content-between">
         <a class="btn btn-md btn-success px-3" href="./new"> + Add Rating </a>
+
+        <div class="dropdown">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            data-bs-auto-close="outside"
+          >
+            Add Filters
+          </button>
+
+          <form id="dropdown-form" class="dropdown-menu">
+            <div class="container">
+              <div class="row p-2" style="background-color: pink">
+                <div
+                  id="condition-container"
+                  class="col-sm-3"
+                  style="background-color: purple; color: white"
+                >
+                  <div class="row element"><span>WHERE</span></div>
+                  <!-- Drop downs should be added here -->
+                  <!-- <div class="row col-6 element" style="margin-left: 50%">
+                    <form id="condition-form">
+                      <select
+                        name="condition"
+                        id="condition"
+                        required
+                        class="form-select"
+                      >
+                        <option value="">Operator</option>
+                        <option value="AND">And</option>
+                        <option value="OR">Or</option>
+                        <option value="NOT">Not</option>
+                      </select>
+                    </form>
+                  </div> -->
+                </div>
+
+                <div class="col-sm-9">
+                  <div id="filter-container" class="row">
+                    <!-- Filter form will be added here -->
+                    <div
+                      class="col-12 d-flex align-items-stretch justify-content-end element"
+                    >
+                      <form id="filter-form" class="d-flex" role="search">
+                        <button
+                          id="btn-clear"
+                          type="button"
+                          class="btn btn-outline-dark me-2"
+                        >
+                          Clear
+                        </button>
+                        <div class="col-auto me-2">
+                          <select
+                            class="form-select"
+                            id="column-names"
+                            name="column-names"
+                            aria-label="Column names dropdown"
+                            required
+                          >
+                            <option value="" selected>Select a column</option>
+                            <option value="location">Location</option>
+                            <option value="time">Time</option>
+                            <option value="date">Date</option>
+                            <option value="type">Type</option>
+                            <option value="rating">Rating</option>
+                            <option value="comments">Comments</option>
+                          </select>
+                        </div>
+                        <div class="col-auto me-2">
+                          <select
+                            class="form-select"
+                            name="comp-op"
+                            id="comp-op"
+                            aria-label="Comparisson operator dropdown"
+                            required
+                          >
+                            <option value="" selected>
+                              Select Comparisson
+                            </option>
+                            <option value=">">Greater than</option>
+                            <option value="<">Less than</option>
+                            <option value="=">Equal</option>
+                          </select>
+                        </div>
+                        <div class="col-auto me-2">
+                          <input
+                            type="search"
+                            class="form-control"
+                            id="search-term"
+                            name="search-term"
+                            placeholder="Search..."
+                            aria-label="search"
+                          />
+                        </div>
+                        <div class="col-auto">
+                          <button class="btn btn-outline-success" type="submit">
+                            Search
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12">
+                    <button id="new-filter-btn" class="btn btn-link">
+                      + Add Filter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="mb-3 p-2">
+              <div class="d-flex justify-content-between">
+                <span>WHERE</span>
+
+                <form
+                  id="filter-form"
+                  class="my-2 p-0 align-items-center justify-content-end"
+                  role="search"
+                >
+                  <button
+                    id="btn-clear"
+                    type="button"
+                    class="btn btn-outline-dark me-2"
+                  >
+                    Clear
+                  </button>
+                  <div class="col-auto">
+                    <select
+                      class="me-2 form-select"
+                      id="column-names"
+                      name="column-names"
+                      aria-label="Column names dropdown"
+                      required
+                    >
+                      <option value="" selected>Select a column</option>
+                      <option value="location">Location</option>
+                      <option value="time">Time</option>
+                      <option value="date">Date</option>
+                      <option value="type">Type</option>
+                      <option value="rating">Rating</option>
+                      <option value="comments">Comments</option>
+                    </select>
+                  </div>
+                  <div class="col-auto">
+                    <select
+                      class="form-select"
+                      name="comp-op"
+                      id="comp-op"
+                      aria-label="Comparisson operator dropdown"
+                      required
+                    >
+                      <option value="" selected>Select Comparisson</option>
+                      <option value=">">Greater than</option>
+                      <option value="<">Less than</option>
+                      <option value="=">Equal</option>
+                    </select>
+                  </div>
+                  <div class="col-auto">
+                    <input
+                      type="search"
+                      class="form-control"
+                      id="search-term"
+                      name="search-term"
+                      placeholder="Search..."
+                      aria-label="search"
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <button class="btn btn-outline-success" type="submit">
+                      Search
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="col-12">
+                <button class="btn">+ Add a filter</button>
+              </div>
+            </div> -->
+          </form>
+        </div>
       </div>
+
       <table class="table table-dark table-stripped table-hover">
         <thead class="table-info">
           <tr>
