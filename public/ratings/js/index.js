@@ -186,5 +186,58 @@ loadEntries().then(showRatings);
 
 filterForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  console.log('Filter form submitted');
+
+  const elementContainers = filterForm.querySelectorAll('div .element');
+
+  console.log(elementContainers.length);
+
+  const formValues = [];
+
+  elementContainers.forEach((element) => {
+    let formData = {};
+
+    for (let i = 0; i < filterForm.elements.length; i++) {
+      let child = filterForm.elements[i];
+
+      if (
+        element.contains(child) &&
+        child.name &&
+        child.type !== 'button' &&
+        child.type !== 'submit' &&
+        child.type !== 'reset'
+      ) {
+        formData[child.name] = child.value;
+      }
+    }
+
+    if (Object.keys(formData).length > 0) {
+      formValues.push(formData);
+    }
+  });
+
+  for (let i = 0; i < formValues.length; i++) {
+    const currElement = formValues[i];
+
+    if (
+      Object.keys(currElement).length === 1 &&
+      currElement.hasOwnProperty('condition')
+    ) {
+      const mergeIndex = i + 2;
+
+      if (mergeIndex < formValues.length) {
+        console.log(currElement);
+        console.log(`Mergin ${i} with ${mergeIndex}`);
+        formValues[mergeIndex] = {
+          ...formValues[mergeIndex],
+          ...currElement,
+        };
+        formValues.splice(i, 1);
+        i--;
+      } else {
+        console.log(`No merge index found for ${i}`);
+      }
+    }
+  }
+
+  console.log(formValues);
 });
