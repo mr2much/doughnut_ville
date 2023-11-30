@@ -189,8 +189,6 @@ filterForm.addEventListener('submit', (e) => {
 
   const elementContainers = filterForm.querySelectorAll('div .element');
 
-  console.log(elementContainers.length);
-
   const formValues = [];
 
   elementContainers.forEach((element) => {
@@ -225,16 +223,12 @@ filterForm.addEventListener('submit', (e) => {
       const mergeIndex = i + 2;
 
       if (mergeIndex < formValues.length) {
-        console.log(currElement);
-        console.log(`Mergin ${i} with ${mergeIndex}`);
         formValues[mergeIndex] = {
           ...formValues[mergeIndex],
           ...currElement,
         };
         formValues.splice(i, 1);
         i--;
-      } else {
-        console.log(`No merge index found for ${i}`);
       }
     }
   }
