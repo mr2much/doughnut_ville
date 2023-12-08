@@ -1,4 +1,3 @@
-const conditionContainer = document.querySelector('#condition-container');
 const filterContainer = document.querySelector('#filter-container');
 const newFilterButton = document.querySelector('#new-filter-btn');
 const filterForm = document.querySelector('#dropdown-form');
@@ -30,7 +29,7 @@ function removeSelf(element) {
   filterContainer.removeChild(filterContainer.children[index]);
 
   // remove the element with the corresponding index from condition-container
-  conditionContainer.removeChild(conditionContainer.children[index]);
+  // conditionContainer.removeChild(conditionContainer.children[index]);
 }
 
 function addConditionContainer() {
@@ -76,6 +75,21 @@ function addFilterContainer() {
     >
       X
     </button>    
+
+    <div class="col-auto me-2">
+      <select
+        class="form-select"
+        id="logic-op"
+        name="logic-op"        
+        aria-label="logical operators dropdown"
+        required                
+      >
+        <option value="" selected>Select operator</option>
+        <option value="AND">And</option>
+        <option value="OR">Or</option>
+        <option value="NOT">Not</option>
+      </select>
+    </div>
 
     <div class="col-auto me-2">
       <select
@@ -126,7 +140,7 @@ function addFilterContainer() {
 }
 
 newFilterButton.addEventListener('click', (e) => {
-  addConditionContainer();
+  // addConditionContainer();
   addFilterContainer();
 });
 
@@ -215,25 +229,25 @@ filterForm.addEventListener('submit', (e) => {
     }
   });
 
-  for (let i = 0; i < formValues.length; i++) {
-    const currElement = formValues[i];
+  // for (let i = 0; i < formValues.length; i++) {
+  //   const currElement = formValues[i];
 
-    if (
-      Object.keys(currElement).length === 1 &&
-      currElement.hasOwnProperty('condition')
-    ) {
-      const mergeIndex = i + 2;
+  //   if (
+  //     Object.keys(currElement).length === 1 &&
+  //     currElement.hasOwnProperty('condition')
+  //   ) {
+  //     const mergeIndex = i + 2;
 
-      if (mergeIndex < formValues.length) {
-        formValues[mergeIndex] = {
-          ...formValues[mergeIndex],
-          ...currElement,
-        };
-        formValues.splice(i, 1);
-        i--;
-      }
-    }
-  }
+  //     if (mergeIndex < formValues.length) {
+  //       formValues[mergeIndex] = {
+  //         ...formValues[mergeIndex],
+  //         ...currElement,
+  //       };
+  //       formValues.splice(i, 1);
+  //       i--;
+  //     }
+  //   }
+  // }
 
   console.log(formValues);
 
@@ -245,12 +259,12 @@ filterForm.addEventListener('submit', (e) => {
       'column-names': columnNames,
       'comp-op': compOp,
       'search-term': searchTerm,
-      condition: condition,
+      'logic-op': logicOp,
     } = filter;
 
-    query += ` ${columnNames} ${compOp} ${searchTerm} ${
-      condition ? condition : ''
-    } `;
+    query += `${
+      logicOp ? logicOp : ''
+    } ${columnNames} ${compOp} ${searchTerm} `;
   });
 
   console.log(query);

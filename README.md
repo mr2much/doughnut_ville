@@ -8,11 +8,11 @@ Brief project description goes here.
 
 ## Client-Side (Front-End):
 
-- Conditionals will be added as part of the new filter
--       [ ] Add conditional dropdown next to Select Column dropdown
--       [ ] Remove conditional dropdown from container on the left
--       [ ] Remove container on the left
--       [ ] Text building new query string with new page structure
+- [x] Conditionals will be added as part of the new filter
+-       [x] Add conditional dropdown next to Select Column dropdown
+-       [x] Remove conditional dropdown from container on the left
+-       [x] Remove container on the left
+-       [x] Test building new query string with new page structure
 
 - [ ] Fix the date format on the Table for the home page.
 - [x] Create a search interface on main screen
@@ -58,5 +58,5 @@ Brief project description goes here.
 
 ## Bugs
 
-- [ ] Query string can't have repeated conditions with current implementation
-- [ ] Two filters, apply condition first. More than two, apply condition last.
+- ~~Query string can't have repeated conditions with current implementation~~ _Fixed_
+- ~~Two filters, apply condition first. More than two, apply condition last.~~ _Fixed_
