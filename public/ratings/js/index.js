@@ -160,6 +160,22 @@ function showRatings(ratings) {
 
 loadEntries().then(showRatings);
 
+async function searchDonuts(params) {
+  const res = await fetch(
+    `${API_URL}/filter?searchTerms=${encodeURIComponent(
+      JSON.stringify(params)
+    )}`
+  );
+
+  return res.json();
+}
+
+function clearTable() {
+  while (ratingsTable.firstChild) {
+    ratingsTable.firstChild.remove();
+  }
+}
+
 filterForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -190,23 +206,8 @@ filterForm.addEventListener('submit', (e) => {
     }
   });
 
-  console.log(formValues);
-
-  // Build query string *THIS SHOULD BE DONE BY THE SERVER*
-  let query = 'SELECT * FROM table_name WHERE';
-  formValues.forEach((filter) => {
-    console.log(filter);
-    const {
-      'column-names': columnNames,
-      'comp-op': compOp,
-      'search-term': searchTerm,
-      'logic-op': logicOp,
-    } = filter;
-
-    query += `${
-      logicOp ? logicOp : ''
-    } ${columnNames} ${compOp} ${searchTerm} `;
+  searchDonuts(formValues).then((result) => {
+    clearTable();
+    showRatings(result);
   });
-
-  console.log(query);
 });

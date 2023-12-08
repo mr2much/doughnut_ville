@@ -37,12 +37,13 @@ Brief project description goes here.
 -       [x] When pressing the button, all entries should be displayed
 - [ ] Add multiple filters
 -       [x] Add elements for the filters
--           [ ] Create search query matching filters
--               [ ] Search query should be created from client side code
--               [ ] Search query should contain selected conditionals
--               [ ] Search query should contain specified criteria
+-           [x] Create search query matching filters
+-               [x] Search query should be created from client side code
+-               [x] Search query should contain selected conditionals
+-               [x] Search query should contain specified criteria
 -       [x] Add button to remove unwanted filters
--       [ ] When pressing the Search button, display results matching filters
+-       [x] Send object containing the filter criteria to the server
+-       [x] When pressing the Search button, display results matching filters
 -       [ ] When removing one of the filters, apply filters with existing ones
 - [ ] Sort entries by column type, and values
 
@@ -55,6 +56,10 @@ Brief project description goes here.
 - [x] Define route for search without ID
 - [x] Handle errors
 -       [x] Fix errors where two requests are being sent at once.
+- [x] Add path to receive requests containing filtered queries
+-       [x] Build query string containing filter criteria
+-       [x] Query database using query string
+-       [x] Send back results of the search query
 
 ## Bugs
 
