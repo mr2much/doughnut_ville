@@ -8,52 +8,14 @@ function removeSelf(element) {
   // Get the div element containing the parent form of the element
   const parentFormDiv = element.parentNode;
 
-  // Get the div containing all the filter elements
-  //const filterContainer = document.querySelector('#filter-container');
-
-  // Get the div containing all the condition elements
-  //const conditionContainer = document.querySelector('#condition-container');
-
   // Get the index of the form containing the calling element from filterContainer
   const index = Array.prototype.indexOf.call(
     filterContainer.children,
     parentFormDiv
   );
 
-  /*
-  Use the index to remove the corresponding elements from both
-  filter-container and condition-container
-   */
-
   // remove the element with the corresponding index from filter-container
   filterContainer.removeChild(filterContainer.children[index]);
-
-  // remove the element with the corresponding index from condition-container
-  // conditionContainer.removeChild(conditionContainer.children[index]);
-}
-
-function addConditionContainer() {
-  const div = document.createElement('div');
-  div.classList.add('row', 'col-12', 'element');
-  // div.style.marginLeft = '50%';
-
-  div.innerHTML = `
-  <div id="condition-form">
-    <select
-      name="condition"
-      id="condition"
-      required
-      class="form-select"
-    >
-      <option value="" selected>Operator</option>
-      <option value="AND">And</option>
-      <option value="OR">Or</option>
-      <option value="NOT">Not</option>
-    </select>
-  </div>
-  `;
-
-  conditionContainer.appendChild(div);
 }
 
 function addFilterContainer() {
@@ -140,7 +102,6 @@ function addFilterContainer() {
 }
 
 newFilterButton.addEventListener('click', (e) => {
-  // addConditionContainer();
   addFilterContainer();
 });
 
@@ -228,26 +189,6 @@ filterForm.addEventListener('submit', (e) => {
       formValues.push(formData);
     }
   });
-
-  // for (let i = 0; i < formValues.length; i++) {
-  //   const currElement = formValues[i];
-
-  //   if (
-  //     Object.keys(currElement).length === 1 &&
-  //     currElement.hasOwnProperty('condition')
-  //   ) {
-  //     const mergeIndex = i + 2;
-
-  //     if (mergeIndex < formValues.length) {
-  //       formValues[mergeIndex] = {
-  //         ...formValues[mergeIndex],
-  //         ...currElement,
-  //       };
-  //       formValues.splice(i, 1);
-  //       i--;
-  //     }
-  //   }
-  // }
 
   console.log(formValues);
 
