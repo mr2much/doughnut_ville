@@ -8,6 +8,12 @@ Brief project description goes here.
 
 ## Client-Side (Front-End):
 
+- Conditionals will be added as part of the new filter
+-       [ ] Add conditional dropdown next to Select Column dropdown
+-       [ ] Remove conditional dropdown from container on the left
+-       [ ] Remove container on the left
+-       [ ] Text building new query string with new page structure
+
 - [ ] Fix the date format on the Table for the home page.
 - [x] Create a search interface on main screen
 - [x] Add checkboxes to select which columns to display
@@ -49,3 +55,8 @@ Brief project description goes here.
 - [x] Define route for search without ID
 - [x] Handle errors
 -       [x] Fix errors where two requests are being sent at once.
+
+## Bugs
+
+- [ ] Query string can't have repeated conditions with current implementation
+- [ ] Two filters, apply condition first. More than two, apply condition last.

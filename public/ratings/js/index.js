@@ -50,6 +50,7 @@ function addConditionContainer() {
       <option value="AND">And</option>
       <option value="OR">Or</option>
       <option value="NOT">Not</option>
+    </select>
   </div>
   `;
 
@@ -187,6 +188,7 @@ loadEntries().then(showRatings);
 filterForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
+  // Extract filter values from controls
   const elementContainers = filterForm.querySelectorAll('div .element');
 
   const formValues = [];
@@ -234,4 +236,22 @@ filterForm.addEventListener('submit', (e) => {
   }
 
   console.log(formValues);
+
+  // Build query string *THIS SHOULD BE DONE BY THE SERVER*
+  let query = 'SELECT * FROM table_name WHERE';
+  formValues.forEach((filter) => {
+    console.log(filter);
+    const {
+      'column-names': columnNames,
+      'comp-op': compOp,
+      'search-term': searchTerm,
+      condition: condition,
+    } = filter;
+
+    query += ` ${columnNames} ${compOp} ${searchTerm} ${
+      condition ? condition : ''
+    } `;
+  });
+
+  console.log(query);
 });
