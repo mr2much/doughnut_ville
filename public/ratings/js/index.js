@@ -1,6 +1,7 @@
 const filterContainer = document.querySelector('#filter-container');
 const newFilterButton = document.querySelector('#new-filter-btn');
 const filterForm = document.querySelector('#dropdown-form');
+const showHideColumnsForm = document.querySelector('#show-hide-columns');
 const btnClear = document.querySelector('#btn-clear');
 
 const ratingsTable = document.querySelector('table tbody');
@@ -209,6 +210,8 @@ filterForm.addEventListener('submit', (e) => {
 
   searchDonuts(formValues).then((result) => {
     clearTable();
+    showHideColumnsForm.reset();
+    showAllColumns();
     showRatings(result);
   });
 });
@@ -221,9 +224,68 @@ function removeAllFilters() {
   }
 }
 
+function showAllColumns() {
+  let headers = document.querySelector('table thead');
+  let rows = headers.rows;
+
+  for (let i = 0; i < rows.length; i++) {
+    let cells = rows[i].cells;
+    for (let j = 0; j < cells.length; j++) {
+      let cell = cells[j];
+
+      if (cell.style.display == 'none') {
+        cell.style.display = '';
+      }
+    }
+  }
+}
+
 btnClear.addEventListener('click', (e) => {
   filterForm.reset();
+  showHideColumnsForm.reset();
   removeAllFilters();
   clearTable();
+  showAllColumns();
   loadEntries().then(showRatings);
+});
+
+function showColumn(columnIndex) {
+  let table = document.querySelector('table');
+  let rows = table.rows;
+
+  for (let i = 0; i < rows.length; i++) {
+    let cells = rows[i].cells;
+    let cell = cells[columnIndex];
+
+    cell.style.display = '';
+  }
+}
+
+function hideColumn(columnIndex) {
+  let table = document.querySelector('table');
+
+  let rows = table.rows;
+
+  for (let i = 0; i < rows.length; i++) {
+    let cells = rows[i].cells;
+    let cell = cells[columnIndex];
+
+    cell.style.display = 'none';
+  }
+}
+
+showHideColumnsForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const checkboxes = showHideColumnsForm.querySelectorAll(
+    'input[type=checkbox]'
+  );
+
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      showColumn(i);
+    } else {
+      hideColumn(i);
+    }
+  }
 });
