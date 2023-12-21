@@ -1,6 +1,7 @@
 const filterContainer = document.querySelector('#filter-container');
 const newFilterButton = document.querySelector('#new-filter-btn');
 const filterForm = document.querySelector('#dropdown-form');
+const btnClear = document.querySelector('#btn-clear');
 
 const ratingsTable = document.querySelector('table tbody');
 
@@ -210,4 +211,19 @@ filterForm.addEventListener('submit', (e) => {
     clearTable();
     showRatings(result);
   });
+});
+
+function removeAllFilters() {
+  elementsToRemove = filterContainer.querySelectorAll('.element');
+
+  for (let i = 1; i < elementsToRemove.length; i++) {
+    filterContainer.removeChild(elementsToRemove[i]);
+  }
+}
+
+btnClear.addEventListener('click', (e) => {
+  filterForm.reset();
+  removeAllFilters();
+  clearTable();
+  loadEntries().then(showRatings);
 });

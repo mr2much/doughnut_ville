@@ -32,7 +32,7 @@ Brief project description goes here.
 -       [x]  create dropdown on the search form on client side
 -       [ ] add more comparisson operators to dropdown
 - [x] Add button to clear search results
--       [ ] When pressing the button, remove all filters
+-       [x] When pressing the button, remove all filters
 -       [x] When pressing the button, all controls must reset
 -       [x] When pressing the button, all entries should be displayed
 - [ ] Add multiple filters
