@@ -34,5 +34,7 @@ module.exports = (params) => {
     query += commands[compOp](filter);
   });
 
+  console.log(query);
+
   return query;
 };

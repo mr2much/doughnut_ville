@@ -7,5 +7,5 @@ module.exports = (filter) => {
   } = filter;
   return `${
     logicOperator ? logicOperator : ''
-  } ${columns} BETWEEN '${firstValue} AND ${secondValue}' `;
+  } ${columns} BETWEEN '${firstValue}' AND '${secondValue}' `;
 };

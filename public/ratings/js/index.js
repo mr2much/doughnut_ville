@@ -6,6 +6,51 @@ const btnClear = document.querySelector('#btn-clear');
 
 const ratingsTable = document.querySelector('table tbody');
 
+function toggleInputs(element) {
+  const operatorsSelect = element.value;
+  const parentNode = element.parentNode;
+
+  const singleSearchTerm = parentNode.querySelector('#search-term');
+  const rangeSearchTerms = parentNode.querySelector('#rangeInputs');
+
+  if (operatorsSelect === 'between') {
+    if (singleSearchTerm.classList.contains('show')) {
+      singleSearchTerm.classList.remove('show');
+    }
+    singleSearchTerm.disabled = true;
+    singleSearchTerm.classList.add('hide');
+
+    if (rangeSearchTerms.classList.contains('hide')) {
+      rangeSearchTerms.classList.remove('hide');
+    }
+
+    rangeSearchTerms.classList.add('show');
+    rangeSearchTerms.querySelectorAll('input').forEach((input) => {
+      if (input.classList.contains('hide')) {
+        input.classList.remove('hide');
+      }
+      input.style.display = 'inline';
+      input.disabled = false;
+    });
+  } else {
+    if (singleSearchTerm.classList.contains('hide')) {
+      singleSearchTerm.classList.remove('hide');
+    }
+    singleSearchTerm.disabled = false;
+    singleSearchTerm.style.display = 'inline';
+
+    if (rangeSearchTerms.classList.contains('show')) {
+      rangeSearchTerms.classList.remove('show');
+    }
+    rangeSearchTerms.querySelectorAll('input').forEach((input) => {
+      input.classList.add('hide');
+      input.disabled = true;
+    });
+
+    rangeSearchTerms.classList.add('hide');
+  }
+}
+
 function removeSelf(element) {
   // Get the div element containing the parent form of the element
   const parentFormDiv = element.parentNode;
@@ -79,6 +124,7 @@ function addFilterContainer() {
         name="comp-op"
         id="comp-op"
         aria-label="Comparisson operator dropdown"
+        onchange="toggleInputs(this)"
         required
       >
         <option value="" selected>Select Comparisson</option>
@@ -94,16 +140,37 @@ function addFilterContainer() {
       </select>
     </div>    
 
-    <div class="col-auto me-2">
+    <input
+      type="search"
+      class="form-control me-2"
+      id="search-term"
+      name="search-term"
+      type="search"
+      placeholder="Search..."
+      aria-label="Search"
+    />
+
+    <div id="rangeInputs" class="hide" name="rangeInputs">
       <input
+        class="form-control me-2"
         type="search"
-        class="form-control"
-        id="search-term"
-        name="search-term"
-        placeholder="Search..."
-        aria-label="search"
+        id="first-value"
+        name="first-value"
+        placeholder="First value"
+        aria-label="First value"
+        disabled="true"
       />
-    </div>          
+      <span class="py-auto my-auto me-2"><strong>AND</strong></span>
+      <input
+        class="form-control me-2"
+        type="search"
+        id="second-value"
+        name="second-value"
+        placeholder="Second value"
+        aria-label="Second value"
+        disabled="true"
+      />
+    </div>
   `;
 
   filterContainer.appendChild(div);
