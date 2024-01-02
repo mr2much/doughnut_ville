@@ -28,24 +28,6 @@ router.get('/ratings', async (req, res, next) => {
   });
 });
 
-// function buildQueryString(params) {
-//   let query = `SELECT * FROM doughnut_ratings WHERE`;
-
-//   params.forEach((filter) => {
-//     const {
-//       'column-names': columnNames,
-//       'comp-op': compOp,
-//       'search-term': searchTerm,
-//       'logic-op': logicOp,
-//     } = filter;
-
-//     query += `${
-//       logicOp ? logicOp : ''
-//     } ${columnNames} ${compOp} '${searchTerm}' `;
-//   });
-
-//   return query;
-// }
 // READ ENTRIES WITH FILTER QUERY
 router.get('/:filter', async (req, res, next) => {
   pool.getConnection((err, connection) => {

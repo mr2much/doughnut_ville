@@ -8,7 +8,7 @@ const lessThanOrEqualTo = require('./lessthanorequalto');
 const like = require('./like');
 const notEqualTo = require('./notequalto');
 
-const commands = {
+const operators = {
   between,
   equalTo,
   greaterThan,
@@ -31,7 +31,7 @@ module.exports = (params) => {
       'logic-op': logicOp,
     } = filter;
 
-    query += commands[compOp](filter);
+    query += operators[compOp](filter);
   });
 
   console.log(query);
