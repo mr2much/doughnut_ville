@@ -24,17 +24,10 @@ module.exports = (params) => {
   let query = `SELECT * FROM doughnut_ratings WHERE`;
 
   params.forEach((filter) => {
-    const {
-      'column-names': columnNames,
-      'comp-op': compOp,
-      'search-term': searchTerm,
-      'logic-op': logicOp,
-    } = filter;
+    const { 'comp-op': compOp } = filter;
 
     query += operators[compOp](filter);
   });
-
-  console.log(query);
 
   return query;
 };
