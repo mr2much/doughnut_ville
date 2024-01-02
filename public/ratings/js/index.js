@@ -82,11 +82,17 @@ function addFilterContainer() {
         required
       >
         <option value="" selected>Select Comparisson</option>
-        <option value=">">Greater than</option>
-        <option value="<">Less than</option>
-        <option value="=">Equal</option>
+        <option value="greaterThan">Greater than</option>
+        <option value="lessThan">Less than</option>
+        <option value="equalTo">Equal</option>
+        <option value="notEqualTo">Not equal to</option>
+        <option value="lessThanOrEqualTo">Less than or equal to</option>
+        <option value="greaterThanOrEqualTo">Greater than or equal to</option>
+        <option value="like">Like</option>
+        <option value="between">Between</option>
+        <option value="inOp">In</option>
       </select>
-    </div>
+    </div>    
 
     <div class="col-auto me-2">
       <input

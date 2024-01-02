@@ -65,3 +65,5 @@ Brief project description goes here.
 
 - ~~Query string can't have repeated conditions with current implementation~~ _Fixed_
 - ~~Two filters, apply condition first. More than two, apply condition last.~~ _Fixed_
+- Fix layout with column dropdown and filter dropdown
+- Fix layout issue with filter dropdown which causes misalignments when reducing the size of the screen

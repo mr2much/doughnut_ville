@@ -1,5 +1,6 @@
 const express = require('express');
 const pool = require('./database/db');
+const operatorHandler = require(`./database/mysql/operators`);
 
 const router = express.Router();
 
@@ -27,24 +28,24 @@ router.get('/ratings', async (req, res, next) => {
   });
 });
 
-function buildQueryString(params) {
-  let query = `SELECT * FROM doughnut_ratings WHERE`;
+// function buildQueryString(params) {
+//   let query = `SELECT * FROM doughnut_ratings WHERE`;
 
-  params.forEach((filter) => {
-    const {
-      'column-names': columnNames,
-      'comp-op': compOp,
-      'search-term': searchTerm,
-      'logic-op': logicOp,
-    } = filter;
+//   params.forEach((filter) => {
+//     const {
+//       'column-names': columnNames,
+//       'comp-op': compOp,
+//       'search-term': searchTerm,
+//       'logic-op': logicOp,
+//     } = filter;
 
-    query += `${
-      logicOp ? logicOp : ''
-    } ${columnNames} ${compOp} '${searchTerm}' `;
-  });
+//     query += `${
+//       logicOp ? logicOp : ''
+//     } ${columnNames} ${compOp} '${searchTerm}' `;
+//   });
 
-  return query;
-}
+//   return query;
+// }
 // READ ENTRIES WITH FILTER QUERY
 router.get('/:filter', async (req, res, next) => {
   pool.getConnection((err, connection) => {
@@ -56,9 +57,7 @@ router.get('/:filter', async (req, res, next) => {
 
     const searchCriteria = JSON.parse(req.query.searchTerms);
 
-    const sqlQuery = buildQueryString(searchCriteria);
-
-    console.log(sqlQuery);
+    const sqlQuery = operatorHandler(searchCriteria);
 
     connection.query(sqlQuery, (err, results, fields) => {
       if (err) {

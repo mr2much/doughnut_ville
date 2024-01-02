@@ -52,123 +52,125 @@
     <div class="container-fluid">
       <h1 class="mb-3 text-center text-success">Doughnut Ratings</h1>
 
-      <div class="mb-2 d-flex justify-content-between">
+      <div class="container-fluid mb-2 d-flex justify-content-between p-2">
         <a class="btn btn-md btn-success px-3" href="./new"> + Add Rating </a>
 
-        <div class="dropdown">
-          <button
-            type="button"
-            class="btn btn-primary dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            data-bs-auto-close="outside"
-          >
-            Show/Hide Columns
-          </button>
-          <form class="dropdown-menu p-4" id="show-hide-columns">
-            <div class="mb-3">
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="location-column"
-                  checked
-                />
-                <label for="location-column" class="form-check-label"
-                  >Location</label
-                >
-              </div>
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="time-column"
-                  checked
-                />
-                <label for="location-column" class="form-check-label"
-                  >Time</label
-                >
-              </div>
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="date-column"
-                  checked
-                />
-                <label for="location-column" class="form-check-label"
-                  >Date</label
-                >
-              </div>
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="type-column"
-                  checked
-                />
-                <label for="location-column" class="form-check-label"
-                  >Type</label
-                >
-              </div>
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="rating-column"
-                  checked
-                />
-                <label for="location-column" class="form-check-label"
-                  >Rating</label
-                >
-              </div>
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  id="comments-column"
-                  checked
-                />
-                <label for="location-column" class="form-check-label"
-                  >Comments</label
-                >
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Done</button>
-          </form>
-        </div>
+        <div class="d-flex">
+          <div class="dropdown me-2">
+            <button
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              data-bs-auto-close="outside"
+            >
+              Show/Hide Columns
+            </button>
 
-        <div class="dropdown">
-          <button
-            type="button"
-            class="btn btn-primary dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            data-bs-auto-close="outside"
-          >
-            Add Filters
-          </button>
+            <form class="dropdown-menu p-4" id="show-hide-columns">
+              <div class="mb-3">
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="location-column"
+                    checked
+                  />
+                  <label for="location-column" class="form-check-label"
+                    >Location</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="time-column"
+                    checked
+                  />
+                  <label for="location-column" class="form-check-label"
+                    >Time</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="date-column"
+                    checked
+                  />
+                  <label for="location-column" class="form-check-label"
+                    >Date</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="type-column"
+                    checked
+                  />
+                  <label for="location-column" class="form-check-label"
+                    >Type</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="rating-column"
+                    checked
+                  />
+                  <label for="location-column" class="form-check-label"
+                    >Rating</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="comments-column"
+                    checked
+                  />
+                  <label for="location-column" class="form-check-label"
+                    >Comments</label
+                  >
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Done</button>
+            </form>
+          </div>
 
-          <form id="dropdown-form" class="dropdown-menu">
-            <div class="container">
-              <div class="row p-2" style="background-color: pink">
-                <div class="col-sm-9">
-                  <div id="filter-container" class="row">
-                    <!-- Filter form will be added here -->
-                    <div
-                      class="col-12 d-flex align-items-stretch justify-content-end element"
-                    >
-                      <form id="filter-form" class="d-flex" role="search">
-                        <button
-                          id="btn-clear"
-                          type="button"
-                          class="btn btn-outline-dark me-2"
-                        >
-                          Clear
-                        </button>
-                        <div class="col-auto me-2">
+          <div class="dropdown">
+            <button
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              data-bs-auto-close="outside"
+            >
+              Add Filters
+            </button>
+
+            <form id="dropdown-form" class="dropdown-menu">
+              <div class="container">
+                <div class="row p-2" style="background-color: pink">
+                  <div class="col-sm-12">
+                    <div id="filter-container" class="row">
+                      <!-- Filter form will be added here -->
+                      <div
+                        class="col-12 d-flex align-items-stretch justify-content-end element"
+                      >
+                        <form id="filter-form" class="d-flex" role="search">
+                          <button
+                            id="btn-clear"
+                            type="button"
+                            class="btn btn-outline-dark me-2"
+                          >
+                            Clear
+                          </button>
+
                           <select
-                            class="form-select"
+                            class="me-2 px-2"
                             id="column-names"
                             name="column-names"
                             aria-label="Column names dropdown"
@@ -182,53 +184,90 @@
                             <option value="rating">Rating</option>
                             <option value="comments">Comments</option>
                           </select>
-                        </div>
-                        <div class="col-auto me-2">
+
                           <select
-                            class="form-select"
+                            class="me-2 px-2"
                             name="comp-op"
                             id="comp-op"
                             aria-label="Comparisson operator dropdown"
+                            onchange="toggleInputs(this)"
                             required
                           >
                             <option value="" selected>
                               Select Comparisson
                             </option>
-                            <option value=">">Greater than</option>
-                            <option value="<">Less than</option>
-                            <option value="=">Equal</option>
+                            <option value="greaterThan">Greater than</option>
+                            <option value="lessThan">Less than</option>
+                            <option value="equalTo">Equal</option>
+                            <option value="notEqualTo">Not equal to</option>
+                            <option value="lessThanOrEqualTo">
+                              Less than or equal to
+                            </option>
+                            <option value="greaterThanOrEqualTo">
+                              Greater than or equal to
+                            </option>
+                            <option value="like">Like</option>
+                            <option value="between">Between</option>
+                            <option value="in">In</option>
                           </select>
-                        </div>
-                        <div class="col-auto me-2">
+
                           <input
                             type="search"
-                            class="form-control"
+                            class="form-control me-2"
                             id="search-term"
                             name="search-term"
                             placeholder="Search..."
                             aria-label="search"
                           />
-                        </div>
-                        <div class="col-auto">
-                          <button class="btn btn-outline-success" type="submit">
-                            Search
-                          </button>
-                        </div>
-                      </form>
+
+                          <div id="rangeInputs" class="hide" name="rangeInputs">
+                            <input
+                              class="form-control me-2"
+                              type="search"
+                              id="first-value"
+                              name="first-value"
+                              placeholder="First value"
+                              aria-label="First value"
+                              disabled="true"
+                            />
+                            <span class="py-auto my-auto me-2"
+                              ><strong>AND</strong></span
+                            >
+                            <input
+                              class="form-control me-2"
+                              type="search"
+                              id="second-value"
+                              name="second-value"
+                              placeholder="Second value"
+                              aria-label="Second value"
+                              disabled="true"
+                            />
+                          </div>
+
+                          <div class="col-auto">
+                            <button
+                              class="btn btn-outline-success"
+                              type="submit"
+                            >
+                              Search
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                      <button id="new-filter-btn" class="btn btn-link">
+                        + Add Filter
+                      </button>
                     </div>
                   </div>
                 </div>
-
-                <div class="row">
-                  <div class="col-12">
-                    <button id="new-filter-btn" class="btn btn-link">
-                      + Add Filter
-                    </button>
-                  </div>
-                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
 
