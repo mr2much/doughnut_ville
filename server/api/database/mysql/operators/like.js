@@ -3,7 +3,10 @@ module.exports = (filter) => {
     'column-names': columns,
     'search-term': term,
     'logic-op': logicOperator,
+    negationSwitch: negation,
   } = filter;
 
-  return `${logicOperator ? logicOperator : ''} ${columns} LIKE '${term}' `;
+  return `${logicOperator ? logicOperator : ''} ${
+    negation ? negation : ''
+  } ${columns} LIKE '${term}' `;
 };

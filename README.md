@@ -5,8 +5,16 @@ Brief project description goes here.
 ## Features
 
 - [ ] Implement search feature on main screen
+- [ ] Implement the NOT operator with either a toggle or a radio button
 
 ## Client-Side (Front-End):
+
+- [x] Implement the NOT operator with either a toggle or a radio button
+-       [x] Add toggle for the NOT operation
+-       [x] Remove the NOT option from the drop down
+-       [x] The NOT should go after the WHERE in the statement
+-       [x] The NOT should go after AND or OR
+-       [x] The NOT can go after the IN, as in NOT IN, or before as in WHERE NOT IN
 
 - [x] Conditionals will be added as part of the new filter
 -       [x] Add conditional dropdown next to Select Column dropdown
@@ -65,5 +73,6 @@ Brief project description goes here.
 
 - ~~Query string can't have repeated conditions with current implementation~~ _Fixed_
 - ~~Two filters, apply condition first. More than two, apply condition last.~~ _Fixed_
-- Fix layout with column dropdown and filter dropdown
-- Fix layout issue with filter dropdown which causes misalignments when reducing the size of the screen
+- ~~Fix layout with column dropdown and filter dropdown~~ _Fixed_
+- ~~Fix layout issue with filter dropdown which causes misalignments when reducing the size of the screen~~
+- There is a bug when selecting the NOT operator

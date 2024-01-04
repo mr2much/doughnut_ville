@@ -160,112 +160,117 @@
                       <div
                         class="col-12 d-flex align-items-stretch justify-content-end element"
                       >
-                        <form id="filter-form" class="d-flex" role="search">
-                          <button
-                            id="btn-clear"
-                            type="button"
-                            class="btn btn-outline-dark me-2"
-                          >
-                            Clear
-                          </button>
+                        <button
+                          id="btn-clear"
+                          type="button"
+                          class="btn btn-outline-dark me-2"
+                        >
+                          Clear
+                        </button>
 
-                          <select
-                            class="me-2 px-2"
-                            id="column-names"
-                            name="column-names"
-                            aria-label="Column names dropdown"
-                            required
-                          >
-                            <option value="" selected>Select a column</option>
-                            <option value="location">Location</option>
-                            <option value="time">Time</option>
-                            <option value="date">Date</option>
-                            <option value="type">Type</option>
-                            <option value="rating">Rating</option>
-                            <option value="comments">Comments</option>
-                          </select>
-
-                          <select
-                            class="me-2 px-2"
-                            name="comp-op"
-                            id="comp-op"
-                            aria-label="Comparisson operator dropdown"
-                            onchange="toggleInputs(this)"
-                            required
-                          >
-                            <option value="" selected>
-                              Select Comparisson
-                            </option>
-                            <option value="greaterThan">Greater than</option>
-                            <option value="lessThan">Less than</option>
-                            <option value="equalTo">Equal</option>
-                            <option value="notEqualTo">Not equal to</option>
-                            <option value="lessThanOrEqualTo">
-                              Less than or equal to
-                            </option>
-                            <option value="greaterThanOrEqualTo">
-                              Greater than or equal to
-                            </option>
-                            <option value="like">Like</option>
-                            <option value="between">Between</option>
-                            <option value="in">In</option>
-                          </select>
-
+                        <div class="form-check form-switch my-auto me-2">
                           <input
-                            type="search"
-                            class="form-control me-2"
-                            id="search-term"
-                            name="search-term"
-                            placeholder="Search..."
-                            aria-label="search"
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id="negationSwitch"
+                            name="negationSwitch"
                           />
+                          <label class="form-check-label" for="negationSwitch"
+                            >NOT</label
+                          >
+                        </div>
 
-                          <div id="rangeInputs" class="hide" name="rangeInputs">
-                            <input
-                              class="form-control me-2"
-                              type="search"
-                              id="first-value"
-                              name="first-value"
-                              placeholder="First value"
-                              aria-label="First value"
-                              disabled="true"
-                            />
-                            <span class="py-auto my-auto me-2"
-                              ><strong>AND</strong></span
-                            >
-                            <input
-                              class="form-control me-2"
-                              type="search"
-                              id="second-value"
-                              name="second-value"
-                              placeholder="Second value"
-                              aria-label="Second value"
-                              disabled="true"
-                            />
-                          </div>
+                        <select
+                          class="me-2 px-2"
+                          id="column-names"
+                          name="column-names"
+                          aria-label="Column names dropdown"
+                          required
+                        >
+                          <option value="" selected>Select a column</option>
+                          <option value="location">Location</option>
+                          <option value="time">Time</option>
+                          <option value="date">Date</option>
+                          <option value="type">Type</option>
+                          <option value="rating">Rating</option>
+                          <option value="comments">Comments</option>
+                        </select>
 
-                          <div class="col-auto">
-                            <button
-                              class="btn btn-outline-success"
-                              type="submit"
-                            >
-                              Search
-                            </button>
-                          </div>
-                        </form>
+                        <select
+                          class="me-2 px-2"
+                          name="comp-op"
+                          id="comp-op"
+                          aria-label="Comparisson operator dropdown"
+                          onchange="toggleInputs(this)"
+                          required
+                        >
+                          <option value="" selected>Select Comparisson</option>
+                          <option value="greaterThan">Greater than</option>
+                          <option value="lessThan">Less than</option>
+                          <option value="equalTo">Equal</option>
+                          <option value="notEqualTo">Not equal to</option>
+                          <option value="lessThanOrEqualTo">
+                            Less than or equal to
+                          </option>
+                          <option value="greaterThanOrEqualTo">
+                            Greater than or equal to
+                          </option>
+                          <option value="like">Like</option>
+                          <option value="between">Between</option>
+                          <option value="in">In</option>
+                        </select>
+
+                        <input
+                          type="search"
+                          class="form-control me-2"
+                          id="search-term"
+                          name="search-term"
+                          placeholder="Search..."
+                          aria-label="search"
+                        />
+
+                        <div id="rangeInputs" class="hide" name="rangeInputs">
+                          <input
+                            class="form-control me-2"
+                            type="search"
+                            id="first-value"
+                            name="first-value"
+                            placeholder="First value"
+                            aria-label="First value"
+                            disabled="true"
+                          />
+                          <span class="py-auto my-auto me-2"
+                            ><strong>AND</strong></span
+                          >
+                          <input
+                            class="form-control me-2"
+                            type="search"
+                            id="second-value"
+                            name="second-value"
+                            placeholder="Second value"
+                            aria-label="Second value"
+                            disabled="true"
+                          />
+                        </div>
+
+                        <div class="col-auto">
+                          <button class="btn btn-outline-success" type="submit">
+                            Search
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-12">
-                      <button
-                        id="new-filter-btn"
-                        class="btn btn-link"
-                        type="button"
-                      >
-                        + Add Filter
-                      </button>
+                    <div class="row">
+                      <div class="col-12">
+                        <button
+                          id="new-filter-btn"
+                          class="btn btn-link"
+                          type="button"
+                        >
+                          + Add Filter
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -4,8 +4,9 @@ module.exports = (filter) => {
     'first-value': firstValue,
     'second-value': secondValue,
     'logic-op': logicOperator,
+    negationSwitch: negation,
   } = filter;
-  return `${
-    logicOperator ? logicOperator : ''
+  return `${logicOperator ? logicOperator : ''} ${
+    negation ? negation : ''
   } ${columns} BETWEEN '${firstValue}' AND '${secondValue}' `;
 };

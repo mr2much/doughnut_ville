@@ -83,62 +83,68 @@ function addFilterContainer() {
       onclick="removeSelf(this)"
     >
       X
-    </button>    
+    </button>
+    
+    <select
+      class="me-2 px-2"
+      id="logic-op"
+      name="logic-op"        
+      aria-label="logical operators dropdown"
+      required                
+    >
+      <option value="" selected>Select operator</option>
+      <option value="AND">And</option>
+      <option value="OR">Or</option>      
+    </select>
 
-    <div class="col-auto me-2">
-      <select
-        class="form-select"
-        id="logic-op"
-        name="logic-op"        
-        aria-label="logical operators dropdown"
-        required                
+    <div class="form-check form-switch my-auto me-2">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="negationSwitch"
+        name="negationSwitch"
+      />
+      <label class="form-check-label" for="negationSwitch"
+        >NOT</label
       >
-        <option value="" selected>Select operator</option>
-        <option value="AND">And</option>
-        <option value="OR">Or</option>
-        <option value="NOT">Not</option>
-      </select>
     </div>
-
-    <div class="col-auto me-2">
-      <select
-        class="form-select"
-        id="column-names"
-        name="column-names"
-        aria-label="column names dropdown"
-        required
-      >
-        <option value="" selected>Select a column</option>
-        <option value="location">Location</option>
-        <option value="time">Time</option>
-        <option value="date">Date</option>
-        <option value="type">Type</option>
-        <option value="rating">Rating</option>
-        <option value="comments">Comments</option>
-      </select>
-    </div>
-
-    <div class="col-auto me-2">
-      <select
-        class="form-select"
-        name="comp-op"
-        id="comp-op"
-        aria-label="Comparisson operator dropdown"
-        onchange="toggleInputs(this)"
-        required
-      >
-        <option value="" selected>Select Comparisson</option>
-        <option value="greaterThan">Greater than</option>
-        <option value="lessThan">Less than</option>
-        <option value="equalTo">Equal</option>
-        <option value="notEqualTo">Not equal to</option>
-        <option value="lessThanOrEqualTo">Less than or equal to</option>
-        <option value="greaterThanOrEqualTo">Greater than or equal to</option>
-        <option value="like">Like</option>
-        <option value="between">Between</option>
-        <option value="inOp">In</option>
-      </select>
-    </div>    
+    
+    <select
+      class="me-2 px-2"
+      id="column-names"
+      name="column-names"
+      aria-label="column names dropdown"
+      required
+    >
+      <option value="" selected>Select a column</option>
+      <option value="location">Location</option>
+      <option value="time">Time</option>
+      <option value="date">Date</option>
+      <option value="type">Type</option>
+      <option value="rating">Rating</option>
+      <option value="comments">Comments</option>
+    </select>    
+    
+    <select
+      class="me-2 px-2"
+      name="comp-op"
+      id="comp-op"
+      aria-label="Comparisson operator dropdown"
+      onchange="toggleInputs(this)"
+      required
+    >
+      <option value="" selected>Select Comparisson</option>
+      <option value="greaterThan">Greater than</option>
+      <option value="lessThan">Less than</option>
+      <option value="equalTo">Equal</option>
+      <option value="notEqualTo">Not equal to</option>
+      <option value="lessThanOrEqualTo">Less than or equal to</option>
+      <option value="greaterThanOrEqualTo">Greater than or equal to</option>
+      <option value="like">Like</option>
+      <option value="between">Between</option>
+      <option value="inOp">In</option>
+    </select>    
 
     <input
       type="search"
@@ -272,7 +278,16 @@ filterForm.addEventListener('submit', (e) => {
         child.type !== 'submit' &&
         child.type !== 'reset'
       ) {
-        formData[child.name] = child.value;
+        if (child.name === 'negationSwitch') {
+          const checkbox = child.parentNode.querySelector('#negationSwitch');
+          if (checkbox.checked) {
+            formData[child.name] = 'NOT';
+          } else {
+            formData[child.name] = '';
+          }
+        } else {
+          formData[child.name] = child.value;
+        }
       }
     }
 
