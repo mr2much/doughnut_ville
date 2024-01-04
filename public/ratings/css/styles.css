@@ -19,3 +19,13 @@
 #dropdown-form {
   width: 60vw;
 }
+
+.hide {
+  display: none !important;
+  cursor: not-allowed;
+}
+
+.show {
+  display: flex;
+  align-items: stretch;
+}
