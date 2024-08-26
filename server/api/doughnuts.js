@@ -92,7 +92,7 @@ function parseBody(body) {
   return doughnut;
 }
 
-function parseBody(body) {
+function parseRateFromBody(body) {
   const { location, time, monthDay, doughnut_type, rating, comments } = body;
   const rate = { location, time, monthDay, doughnut_type, rating, comments };
 
@@ -107,7 +107,7 @@ router.post('/ratings', (req, res, next) => {
       return;
     }
 
-    const rate = parseBody(req.body);
+    const rate = parseRateFromBody(req.body);
     const query =
       "INSERT INTO doughnut_ratings (location, time, date, type, rating, comments) VALUES(?, ?, STR_TO_DATE(?, '%m/%d'), ?, ?, ?)";
 

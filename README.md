@@ -1,26 +1,12 @@
-# Doughtnut Ville
+# Project Title
 
 Brief project description goes here.
 
 ## Features
 
 - [ ] Implement search feature on main screen
-- [ ] Implement the NOT operator with either a toggle or a radio button
 
 ## Client-Side (Front-End):
-
-- [x] Implement the NOT operator with either a toggle or a radio button
--       [x] Add toggle for the NOT operation
--       [x] Remove the NOT option from the drop down
--       [x] The NOT should go after the WHERE in the statement
--       [x] The NOT should go after AND or OR
--       [x] The NOT can go after the IN, as in NOT IN, or before as in WHERE NOT IN
-
-- [x] Conditionals will be added as part of the new filter
--       [x] Add conditional dropdown next to Select Column dropdown
--       [x] Remove conditional dropdown from container on the left
--       [x] Remove container on the left
--       [x] Test building new query string with new page structure
 
 - [ ] Fix the date format on the Table for the home page.
 - [x] Create a search interface on main screen
@@ -40,19 +26,8 @@ Brief project description goes here.
 -       [x]  create dropdown on the search form on client side
 -       [ ] add more comparisson operators to dropdown
 - [x] Add button to clear search results
--       [x] When pressing the button, remove all filters
 -       [x] When pressing the button, all controls must reset
 -       [x] When pressing the button, all entries should be displayed
-- [ ] Add multiple filters
--       [x] Add elements for the filters
--           [x] Create search query matching filters
--               [x] Search query should be created from client side code
--               [x] Search query should contain selected conditionals
--               [x] Search query should contain specified criteria
--       [x] Add button to remove unwanted filters
--       [x] Send object containing the filter criteria to the server
--       [x] When pressing the Search button, display results matching filters
--       [ ] When removing one of the filters, apply filters with existing ones
 - [ ] Sort entries by column type, and values
 
 ## Server-Side (Back-End):
@@ -64,15 +39,3 @@ Brief project description goes here.
 - [x] Define route for search without ID
 - [x] Handle errors
 -       [x] Fix errors where two requests are being sent at once.
-- [x] Add path to receive requests containing filtered queries
--       [x] Build query string containing filter criteria
--       [x] Query database using query string
--       [x] Send back results of the search query
-
-## Bugs
-
-- ~~Query string can't have repeated conditions with current implementation~~ _Fixed_
-- ~~Two filters, apply condition first. More than two, apply condition last.~~ _Fixed_
-- ~~Fix layout with column dropdown and filter dropdown~~ _Fixed_
-- ~~Fix layout issue with filter dropdown which causes misalignments when reducing the size of the screen~~
-- There is a bug when selecting the NOT operator
