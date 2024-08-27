@@ -3,7 +3,7 @@ errorMsg.style.display = 'none';
 
 const btnCancel = document.querySelector('#btn-cancel');
 btnCancel.addEventListener('click', (e) => {
-  window.location = '/';
+  window.location = '/api/v1/';
 });
 
 const form = document.querySelector('form');
@@ -45,7 +45,7 @@ form.addEventListener('submit', (e) => {
 
   createNewDoughnut(newDoughnut).then((result) => {
     if (result.status == 200) {
-      window.location = '/';
+      window.location = '/api/v1/';
     }
   });
 });
